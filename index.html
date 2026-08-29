@@ -1,0 +1,868 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bengalas Inteligentes | Tecnologia e Acessibilidade</title>
+
+    <meta name="description"
+          content="Conheça as bengalas inteligentes, sua tecnologia, funcionamento, componentes, benefícios e limitações.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: #f5f7fa;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1d3047;
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #dce7f3;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+
+            background:
+                radial-gradient(circle at top, #12355a 0%, #07111f 55%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #245a7d;
+            border-radius: 30px;
+            color: #38bdf8;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #b9c7d6;
+            font-size: 19px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 14px 25px;
+            border-radius: 10px;
+            background: #38bdf8;
+            color: #06101c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #7dd3fc;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #9fb0c2;
+        }
+
+        .text {
+            max-width: 850px;
+            margin: auto;
+            color: #cbd5e1;
+            font-size: 17px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #0d1b2d;
+            border: 1px solid #1c344e;
+            padding: 30px;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+        }
+
+        .card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #f8fafc;
+        }
+
+        .card p {
+            color: #aebed0;
+        }
+
+        /* =========================
+           FUNCIONAMENTO
+        ========================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 25px 15px;
+            background: #0d1b2d;
+            border-radius: 15px;
+            border: 1px solid #1c344e;
+        }
+
+        .number {
+            width: 45px;
+            height: 45px;
+            margin: auto auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #38bdf8;
+            color: #06101c;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #aebed0;
+            font-size: 14px;
+        }
+
+        /* =========================
+           DIAGRAMA
+        ========================= */
+
+        .diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .diagram-box {
+            background: #102238;
+            border: 1px solid #2a4a67;
+            padding: 20px;
+            min-width: 160px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .arrow {
+            font-size: 28px;
+            color: #38bdf8;
+        }
+
+        /* =========================
+           BENEFÍCIOS
+        ========================= */
+
+        .benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .benefit {
+            background: #0d1b2d;
+            border-left: 4px solid #38bdf8;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .benefit h3 {
+            margin-bottom: 8px;
+        }
+
+        .benefit p {
+            color: #afbdcc;
+        }
+
+        /* =========================
+           ALERTA
+        ========================= */
+
+        .warning {
+            background: #241c0c;
+            border: 1px solid #75591b;
+            padding: 25px;
+            border-radius: 14px;
+            color: #ead9a5;
+        }
+
+        .warning strong {
+            color: #ffd166;
+        }
+
+        /* =========================
+           CONCLUSÃO
+        ========================= */
+
+        .conclusion {
+            text-align: center;
+            background: linear-gradient(135deg, #0b2036, #07111f);
+            border-radius: 20px;
+            padding: 60px 30px;
+            border: 1px solid #1c344e;
+        }
+
+        .conclusion h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .conclusion p {
+            max-width: 750px;
+            margin: auto;
+            color: #b9c7d6;
+            font-size: 17px;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid #1c3045;
+            color: #7f91a5;
+            font-size: 14px;
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 18px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">🤖 BENGALAS INTELIGENTES</div>
+
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#funcionamento">Funcionamento</a></li>
+            <li><a href="#componentes">Componentes</a></li>
+            <li><a href="#beneficios">Benefícios</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- =========================
+     CAPA
+========================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ROBÓTICA • TECNOLOGIA • ACESSIBILIDADE
+        </div>
+
+        <h1>
+            Bengalas<br>
+            <span>Inteligentes</span>
+        </h1>
+
+        <p>
+            Tecnologia desenvolvida para auxiliar na identificação
+            de obstáculos e tornar a locomoção de pessoas com
+            deficiência visual mais segura e independente.
+        </p>
+
+        <a class="button" href="#sobre">
+            Conheça a tecnologia ↓
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<section id="sobre">
+
+    <div class="section-title">
+
+        <h2>O que são bengalas inteligentes?</h2>
+
+        <p>
+            Tecnologia aplicada à acessibilidade
+        </p>
+
+    </div>
+
+    <div class="text">
+
+        <p>
+            As bengalas inteligentes são dispositivos que utilizam
+            componentes eletrônicos e sensores para auxiliar pessoas
+            com deficiência visual durante a locomoção.
+        </p>
+
+        <br>
+
+        <p>
+            Diferentemente de uma bengala tradicional, uma bengala
+            inteligente pode detectar determinados obstáculos antes
+            que eles sejam alcançados pelo usuário e emitir um alerta,
+            geralmente por meio de vibração ou som.
+        </p>
+
+        <br>
+
+        <p>
+            A ideia principal é utilizar a tecnologia como uma
+            ferramenta complementar para aumentar a percepção do
+            ambiente e proporcionar maior autonomia ao usuário.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FUNCIONAMENTO
+========================= -->
+
+<section id="funcionamento">
+
+    <div class="section-title">
+
+        <h2>Como funciona?</h2>
+
+        <p>
+            Do obstáculo até o alerta
+        </p>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="number">1</div>
+
+            <h3>Sensor</h3>
+
+            <p>
+                O sensor ultrassônico envia ondas e identifica
+                objetos próximos.
+            </p>
+        </div>
+
+
+        <div class="step">
+            <div class="number">2</div>
+
+            <h3>Processamento</h3>
+
+            <p>
+                Um microcontrolador recebe e interpreta a
+                informação do sensor.
+            </p>
+        </div>
+
+
+        <div class="step">
+            <div class="number">3</div>
+
+            <h3>Decisão</h3>
+
+            <p>
+                O sistema verifica a distância do obstáculo
+                e determina se deve emitir um alerta.
+            </p>
+        </div>
+
+
+        <div class="step">
+            <div class="number">4</div>
+
+            <h3>Alerta</h3>
+
+            <p>
+                O usuário recebe um alerta através de vibração
+                ou som.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="diagram">
+
+        <div class="diagram-box">
+            📡<br>
+            <strong>Sensor</strong>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="diagram-box">
+            🧠<br>
+            <strong>Microcontrolador</strong>
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="diagram-box">
+            📳<br>
+            <strong>Vibração / Som</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMPONENTES
+========================= -->
+
+<section id="componentes">
+
+    <div class="section-title">
+
+        <h2>Principais componentes</h2>
+
+        <p>
+            O que pode existir dentro de uma bengala inteligente
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">📡</div>
+
+            <h3>Sensor ultrassônico</h3>
+
+            <p>
+                Mede a distância entre a bengala e determinados
+                obstáculos utilizando ondas ultrassônicas.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🧠</div>
+
+            <h3>Arduino ou ESP32</h3>
+
+            <p>
+                Microcontrolador responsável por receber os dados
+                dos sensores e controlar os alertas.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📳</div>
+
+            <h3>Motor vibratório</h3>
+
+            <p>
+                Pode transformar a informação detectada em uma
+                vibração que o usuário consegue sentir.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔊</div>
+
+            <h3>Buzzer</h3>
+
+            <p>
+                Pode emitir sons para informar que um obstáculo
+                foi detectado.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔋</div>
+
+            <h3>Bateria</h3>
+
+            <p>
+                Fornece energia para o microcontrolador, sensores
+                e sistemas de alerta.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔌</div>
+
+            <h3>Fiação</h3>
+
+            <p>
+                Conecta os diferentes componentes eletrônicos
+                responsáveis pelo funcionamento do sistema.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BENEFÍCIOS
+========================= -->
+
+<section id="beneficios">
+
+    <div class="section-title">
+
+        <h2>Benefícios</h2>
+
+        <p>
+            Como essa tecnologia pode ajudar
+        </p>
+
+    </div>
+
+
+    <div class="benefits">
+
+        <div class="benefit">
+
+            <h3>🛡️ Auxílio na detecção</h3>
+
+            <p>
+                Pode alertar o usuário sobre determinados obstáculos
+                que estejam dentro do alcance dos sensores.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>🚶 Maior autonomia</h3>
+
+            <p>
+                A tecnologia pode fornecer informações adicionais
+                para auxiliar a pessoa durante a locomoção.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>⚙️ Tecnologia acessível</h3>
+
+            <p>
+                Projetos educacionais podem utilizar componentes
+                relativamente simples, como Arduino e sensores.
+            </p>
+
+        </div>
+
+
+        <div class="benefit">
+
+            <h3>💡 Possibilidade de evolução</h3>
+
+            <p>
+                O sistema pode receber novos sensores e recursos,
+                dependendo do projeto.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LIMITAÇÕES
+========================= -->
+
+<section>
+
+    <div class="section-title">
+
+        <h2>Limitações</h2>
+
+        <p>
+            Tecnologia não significa segurança absoluta
+        </p>
+
+    </div>
+
+
+    <div class="warning">
+
+        <strong>⚠️ Importante:</strong>
+
+        <br><br>
+
+        Uma bengala inteligente não deve ser considerada uma
+        substituta completa da bengala tradicional ou de técnicas
+        de orientação e mobilidade.
+
+        <br><br>
+
+        Sensores possuem limitações de alcance e podem não detectar
+        todos os tipos de obstáculos. Por isso, um projeto desse tipo
+        deve ser utilizado como recurso complementar e precisa ser
+        cuidadosamente testado antes de ser considerado seguro
+        para uso real.
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONCLUSÃO
+========================= -->
+
+<section>
+
+    <div class="conclusion">
+
+        <h2>O futuro da acessibilidade</h2>
+
+        <p>
+            As bengalas inteligentes mostram como a robótica pode
+            ser utilizada para solucionar problemas reais da sociedade.
+            Ao combinar sensores, programação e eletrônica, é possível
+            desenvolver ferramentas capazes de fornecer informações
+            adicionais para pessoas com deficiência visual.
+        </p>
+
+        <br>
+
+        <p>
+            Mais do que criar uma tecnologia, o objetivo é utilizar
+            a inovação para aumentar a acessibilidade, a autonomia
+            e a inclusão.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+<footer>
+
+    <p>
+        🤖 Projeto sobre Bengalas Inteligentes
+    </p>
+
+    <p>
+        Tecnologia • Robótica • Acessibilidade
+    </p>
+
+</footer>
+
+
+</body>
+</html>
+```
